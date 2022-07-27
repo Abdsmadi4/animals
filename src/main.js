@@ -1,6 +1,5 @@
 import React from "react";
 import HornedBeast from "./hornedbeast";
-import data from "./data.json"
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -12,9 +11,9 @@ class Main extends React.Component{
             <Row xs={1} md={2} lg={3}>
 
                 {
-                 data.map(val => 
+                 this.props.allBeast.map(val => 
                     <Col>
-                    <HornedBeast  title={val.title} src={val.image_url} des={val.description} />
+                    <HornedBeast key={val.title} title={val.title} src={val.image_url} des={val.description} displayModal={this.props.displayModal}  data={val}/>
                     </Col>
                  )
                 }
