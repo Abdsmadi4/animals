@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       allBeast : data ,
       selectedBeast :{},
-      showModal: false
+      showModal: false ,
+      hornesNum: ''
     }
   }
 
@@ -29,11 +30,23 @@ class App extends React.Component {
       showModal :false
     })
   }
+
+
+  handleSelect = (e) => {
+
+    this.setState({
+        hornesNum: e.target.value
+    })
+
+    console.log(this.state.hornesNum);
+}
+
+
   render(){
   return (
     <div className="App">
         <Header/>
-        <Main allBeast={this.state.allBeast} displayModal={this.displayModal}/>
+        <Main allBeast={this.state.allBeast} displayModal={this.displayModal} hornesNum={this.state.hornesNum} handleSelect={this.handleSelect}/>
         <Selected show={this.state.showModal} handleClose={this.handleClose} selectedBeast={this.state.selectedBeast}/>
         <Footer/>
     </div>
