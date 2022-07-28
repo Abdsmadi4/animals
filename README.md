@@ -8,8 +8,8 @@ Number and name of feature:  5 Features
 
 Estimate of time needed to complete: 2 hours
 
-Start time: 7pm
+Start time: 6:30pm
 
-Finish time: 10pm
+Finish time: 7pm
 
-Actual time needed to complete: 3 hours
+Actual time needed to complete: 30 minutes
