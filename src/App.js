@@ -8,50 +8,48 @@ import Selected from './selectedBeast';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      allBeast : data ,
-      selectedBeast :{},
-      showModal: false ,
-      hornesNum: ''
+      allBeast: data,
+      selectedBeast: {},
+      showModal: false,
     }
   }
 
-  displayModal =(beast)=>{
+  displayModal = (beast) => {
     this.setState({
-      showModal :true,
-      selectedBeast :beast
+      showModal: true,
+      selectedBeast: beast
     })
   }
 
-  handleClose = () =>{
+  handleClose = () => {
     this.setState({
-      showModal :false
+      showModal: false
     })
   }
 
+  filterHornes = (e) => {
+    const hornesNumber = parseInt(e.target.value);
+    let filteredData = data;
+    if (hornesNumber) {
+      filteredData = data.filter(val => val.horns === hornesNumber)
+    }
 
-  handleSelect = (e) => {
+    this.setState({allBeast : filteredData });
+  }
 
-    this.setState({
-        hornesNum: e.target.value
-    })
-
-    console.log(this.state.hornesNum);
-}
-
-
-  render(){
-  return (
-    <div className="App">
-        <Header/>
-        <Main allBeast={this.state.allBeast} displayModal={this.displayModal} hornesNum={this.state.hornesNum} handleSelect={this.handleSelect}/>
-        <Selected show={this.state.showModal} handleClose={this.handleClose} selectedBeast={this.state.selectedBeast}/>
-        <Footer/>
-    </div>
-  );
-}
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Main allBeast={this.state.allBeast} displayModal={this.displayModal}  filterHornes={this.filterHornes} />
+        <Selected show={this.state.showModal} handleClose={this.handleClose} selectedBeast={this.state.selectedBeast} />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
